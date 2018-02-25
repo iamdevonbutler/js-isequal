@@ -9,6 +9,16 @@ Recursive deep equality checking for JS.
 npm i --save js-isequal
 ```
 
+## Comparable types
+- String
+- Number
+- Boolean
+- Array
+- Object
+- Null
+- Undefined
+- Date
+
 ## Example
 ```javascript
 const isEqual = require('js-isequal');

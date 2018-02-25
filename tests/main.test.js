@@ -22,20 +22,20 @@ describe('js-isequal', () => {
     expect(isEqual([1], [1])).to.be.true;
     expect(isEqual([1, 2], [1, 2])).to.be.true;
     expect(isEqual([1, [1]], [1, [1]])).to.be.true;
-    expect(isEqual([{a: 1}, {a: 1}])).to.be.true;
-    expect(isEqual([{a: 1, b: {c: 2}}, {a: 1, b: {c: 2}}])).to.be.true;
+    expect(isEqual([{a: 1}, {a: 1}], [{a: 1}, {a: 1}])).to.be.true;
+    expect(isEqual([{a: 1, b: {c: 2}}, {a: 1, b: {c: 2}}], [{a: 1, b: {c: 2}}, {a: 1, b: {c: 2}}])).to.be.true;
     expect(isEqual([{a: [1]}, {a: [1]}], [{a: [1]}, {a: [1]}])).to.be.true;
   });
   it ('should compare "objects"', () => {
-    expect({}, {}).to.be.true;
-    expect({a: 1}, {a: 1}).to.be.true;
-    expect({a: [1]}, {a: [1]}).to.be.true;
-    expect({a: {b: 1}}, {a: {b: 1}}).to.be.true;
-    expect({a: {b: [1, 2, {c: 1, d: {e: 1}}]}}, {a: {b: [1, 2, {c: 1, d: {e: 1}}]}}).to.be.true;
-    expect({a: 1}, {a: 2}).to.be.false;
-    expect({a: [1]}, {a: [2]}).to.be.false;
-    expect({a: {b: 1}}, {a: {b: 2}}).to.be.false;
-    expect({a: {b: [1, 2, {c: 1, d: {e: 1}}]}}, {a: {b: [1, 2, {c: 1, d: {e: 2}}]}}).to.be.false;
+    expect(isEqual({}, {})).to.be.true;
+    expect(isEqual({a: 1}, {a: 1})).to.be.true;
+    expect(isEqual({a: [1]}, {a: [1]})).to.be.true;
+    expect(isEqual({a: {b: 1}}, {a: {b: 1}})).to.be.true;
+    expect(isEqual({a: {b: [1, 2, {c: 1, d: {e: 1}}]}}, {a: {b: [1, 2, {c: 1, d: {e: 1}}]}})).to.be.true;
+    expect(isEqual({a: 1}, {a: 2})).to.be.false;
+    expect(isEqual({a: [1]}, {a: [2]})).to.be.false;
+    expect(isEqual({a: {b: 1}}, {a: {b: 2}})).to.be.false;
+    expect(isEqual({a: {b: [1, 2, {c: 1, d: {e: 1}}]}}, {a: {b: [1, 2, {c: 1, d: {e: 2}}]}})).to.be.false;
   });
   it ('should compare "null"', () => {
     expect(isEqual(null, null)).to.be.true;
@@ -48,7 +48,7 @@ describe('js-isequal', () => {
   it ('should compare "dates"', () => {
     var date = new Date();
     expect(isEqual(date, date)).to.be.true;
-    expect(isEqual(new Date(), new Date())).to.be.false;
+    expect(isEqual(date, new Date(1519534800))).to.be.false;
   });
   it ('should NOT compare "functions"', () => {
     expect(isEqual(() => {}, () => {})).to.be.false;
