@@ -64,7 +64,7 @@ describe('js-isequal', () => {
   it ('should return "false" given a single param', () => {
     expect(isEqual('a')).to.be.false;
   });
-  it ('should return false given no params', () => {
+  it ('should return "false" given no params', () => {
     expect(isEqual()).to.be.false;
   });
 });
